@@ -34,7 +34,7 @@ body {
         /* 1. 虹色のグラデーションを作る */
     background: linear-gradient(
         to right, 
-        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+        #ff1d1d, #eeff00, #78ffd2, #00ff00, #0000ff, #02eeff, #dd00ad
     );
     
     /* 2. 背景を文字の形に切り抜く */
