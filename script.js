@@ -3,14 +3,27 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // 2. あなたのFirebase設定（ステップ1でメモしたものに書き換えてください）
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "...",
-    appId: "..."
+  apiKey: "AIzaSyCH-MgINdvD47RF8-YCiZxz-FXM2GtiC9Y",
+  authDomain: "kuma-8b55b.firebaseapp.com",
+  projectId: "kuma-8b55b",
+  storageBucket: "kuma-8b55b.firebasestorage.app",
+  messagingSenderId: "862830358024",
+  appId: "1:862830358024:web:3817ed08d5353df89c2bbd",
+  measurementId: "G-2YV2GSXYD2"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // 3. 初期化
 const app = initializeApp(firebaseConfig);
