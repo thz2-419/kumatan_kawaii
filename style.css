@@ -6,6 +6,36 @@ body {
     padding: 20px;
 }
 
+.flex-container {
+    display: flex;
+    gap: 20px;
+    /* アイテム間のスペース */
+    align-items: center;
+    /* アイテムを垂直方向に中央揃え */
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.balloon-side {
+    position: relative;
+    padding: 15px 20px;
+    background: #ffeb3b;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.balloon-side::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10px;
+/* 三角形を左に向ける設定 */
+    border-right: 10px solid #ffeb3b;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
 .profile-card {
     background-color: #ffffff;
     border-left: 8px solid #005bac;
