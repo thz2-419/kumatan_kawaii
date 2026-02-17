@@ -16,7 +16,7 @@ body {
     /* 外側の余白 */
     border-radius: 4px;
     /* 少しだけ角を丸める */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.5);
     /* 柔らかい影 */
 }
 
