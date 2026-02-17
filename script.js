@@ -2,10 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 2. あなたのFirebase設定（ステップ1でメモしたものに書き換えてください）
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,10 +17,6 @@ const firebaseConfig = {
   appId: "1:862830358024:web:3817ed08d5353df89c2bbd",
   measurementId: "G-2YV2GSXYD2"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 // 3. 初期化
 const app = initializeApp(firebaseConfig);
