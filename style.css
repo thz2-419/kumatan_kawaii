@@ -1,0 +1,20 @@
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    }
+
+    h1{
+    color: #005bac;
+    border-bottom: 2px solid"#005bac";
+    padding-bottom: 10px;
+    }
+
+    ul{
+        background-color: #f4f7f6;
+        padding:20px 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
