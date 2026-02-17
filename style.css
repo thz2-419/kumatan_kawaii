@@ -30,6 +30,32 @@ body {
     justify-content: center;
     margin: 20px 0;
 }
+.rainbowBIG-text{
+        /* 1. 虹色のグラデーションを作る */
+    background: linear-gradient(
+        to right, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+    );
+    
+    /* 2. 背景を文字の形に切り抜く */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. 本来の文字色を透明にする（背景の虹色を見せるため） */
+    color: transparent;
+    
+    /* 4. 背景のサイズを大きくして動かせるようにする */
+    background-size: 200% auto;
+    
+    /* 5. アニメーションを適用（3秒かけてループ） */
+    animation: rainbow-move 3s linear infinite;
+
+    /* --- 追加：大きさと太さの設定 --- */
+    font-size: 3em;      /* 周りの文字の1.5倍の大きさに設定 */
+    font-weight: bold;     /* 文字を太くして虹色を見えやすくする */
+    vertical-align: middle; /* 横の文字と高さの中心を合わせる */
+}
+
 
 .rainbow-text {
     /* 1. 虹色のグラデーションを作る */
