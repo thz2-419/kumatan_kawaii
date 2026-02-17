@@ -23,7 +23,7 @@ body {
 .profile_image {
     width: 100px;
     /* 画像の幅 */
-    height:5500px;
+    height: 100px;
     /* 画像の高さ */
     border-radius: 50%;
     /* 円形にする */
