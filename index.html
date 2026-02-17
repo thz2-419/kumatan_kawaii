@@ -35,17 +35,20 @@
     <div class="bbs-container">
         <h2>掲示板</h2>
 <form class="bbs-form">
-        <input type="text" placeholder="名前" id="username">
-        <textarea placeholder="メッセージを書こう！" id="message"></textarea>
-        <button type="button" onclick="addPost()">投稿する</button>
+        <input type="text" placeholder="名前" id="input-name">
+        <textarea placeholder="メッセージを書こう！" id="input-message"></textarea>
+    
+        <button onclick="addPost()">投稿する</button>
     </form>
 
     <div id ="post-list">
-        <div-class="post">
+        <div class="post">
             <h3>くまたん</h3>
             <p>こんにちは！これはテスト投稿です。</p>
        </div>
     </div>
+
+    <script src ="script.js"></script>
 </body>
 
 </html>
