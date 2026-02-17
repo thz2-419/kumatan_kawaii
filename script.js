@@ -42,12 +42,36 @@ window.addPost = async () => {
 const q = query(postsRef, orderBy("timestamp", "desc"));
 onSnapshot(q, (snapshot) => {
     const postArea = document.getElementById('post-area');
-    postArea.innerHTML = ""; // 一旦クリア
+    postArea.innerHTML = ""; 
+    
     snapshot.forEach((doc) => {
         const data = doc.data();
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
-        postDiv.innerHTML = `<strong>${data.name}</strong><p>${data.message}</p>`;
+
+        // --- 時間の変換処理 ---
+        let timeString = "送信中...";
+        if (data.timestamp) {
+            // FirebaseのタイムスタンプをJavaScriptのDateオブジェクトに変換
+            const date = data.timestamp.toDate();
+            // 日本の形式（2026/02/17 10:30）に整える
+            timeString = date.toLocaleString('ja-JP', {
+                month: 'numeric',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // --- HTMLの組み立て ---
+        postDiv.innerHTML = `
+            <div class="post-header">
+                <span class="post-id">${data.userID || 'ID不明'}</span>
+                <span class="post-time">${timeString}</span>
+            </div>
+            <strong>${data.name}</strong>
+            <p>${data.message}</p>
+        `;
         postArea.appendChild(postDiv);
     });
 });
