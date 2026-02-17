@@ -18,3 +18,24 @@ body{
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
+    .profile-card {
+    background-color: #ffffff;
+    border-left: 8px solid #005bac; /* 左側に太いアクセント線 */
+    padding: 20px;                 /* 内側の余白 */
+    margin: 20px 0;                /* 外側の余白 */
+    border-radius: 4px;            /* 少しだけ角を丸める */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* 柔らかい影 */
+}
+
+/* リンクやボタンの装飾 */
+a {
+    color: #005bac;
+    text-decoration: none; /* 下線を消す */
+    transition: 0.3s;      /* 変化を滑らかにする */
+}
+
+a:hover {
+    color: #ff6b6b;        /* マウスを乗せた時の色 */
+    text-shadow: 0 0 5px rgba(255,107,107,0.3);
+}
