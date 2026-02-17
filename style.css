@@ -31,6 +31,32 @@ body {
     margin: 20px 0;
 }
 
+.rainbow-text {
+    /* 1. 虹色のグラデーションを作る */
+    background: linear-gradient(
+        to right, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+    );
+    
+    /* 2. 背景を文字の形に切り抜く */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. 本来の文字色を透明にする（背景の虹色を見せるため） */
+    color: transparent;
+    
+    /* 4. 背景のサイズを大きくして動かせるようにする */
+    background-size: 200% auto;
+    
+    /* 5. アニメーションを適用（3秒かけてループ） */
+    animation: rainbow-move 3s linear infinite;
+}
+
+@keyframes rainbow-move {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
 .balloon-side {
     position: relative;
     padding: 15px 20px;
