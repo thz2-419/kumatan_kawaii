@@ -51,3 +51,103 @@ onSnapshot(q, (snapshot) => {
         postArea.appendChild(postDiv);
     });
 });
+
+function getOrCreateUserID() {
+    let uid = localStorage.getItem('kuma_user_id');
+    if (!uid) {
+        // 初めての人にはランダムなID（例：ID-12345）を作る
+        uid = 'ID-' + Math.floor(Math.random() * 100000);
+        localStorage.setItem('kuma_user_id', uid);
+    }
+    return uid;
+}
+
+// --- 2. 投稿する関数を修正 ---
+window.addPost = async () => {
+    const name = document.getElementById('input-name').value;
+    const message = document.getElementById('input-message').value;
+    const userID = getOrCreateUserID(); // ここでIDを取得（ユーザーは操作不能）
+
+    if (name && message) {
+        await addDoc(postsRef, {
+            name: name,
+            message: message,
+            userID: userID, // IDをデータベースに保存
+            timestamp: serverTimestamp()
+        });
+        document.getElementById('input-message').value = "";
+    }
+};
+
+onSnapshot(q, (snapshot) => {
+    const postArea = document.getElementById('post-area');
+    postArea.innerHTML = "";
+    snapshot.forEach((doc) => {
+        const data = doc.data();
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+        // HTMLの中にIDを表示する場所を作る
+        postDiv.innerHTML = `
+            <small style="color: #888;">${data.userID || '不明'}</small><br>
+            <strong>${data.name}</strong>
+            <p>${data.message}</p>
+        `;
+        postArea.appendChild(postDiv);
+    });
+});
+
+// --- 1. 初期設定（ページ読み込み時に実行） ---
+function initUser() {
+    const savedName = localStorage.getItem('kuma_user_name');
+    const nameReg = document.getElementById('name-registration');
+    const msgArea = document.getElementById('message-area');
+    const displayName = document.getElementById('display-user-name');
+
+    if (savedName) {
+        // 名前がある場合：メッセージ入力欄を表示
+        nameReg.style.display = 'none';
+        msgArea.style.display = 'block';
+        displayName.innerText = savedName;
+    } else {
+        // 名前がない場合：登録画面を表示
+        nameReg.style.display = 'block';
+        msgArea.style.display = 'none';
+    }
+}
+
+// --- 2. 名前をブラウザに登録する関数 ---
+window.registerName = () => {
+    const name = document.getElementById('input-name').value;
+    if (!name) return alert("名前を入力してね！");
+    
+    localStorage.setItem('kuma_user_name', name);
+    initUser(); // 画面を切り替え
+};
+
+// --- 3. 投稿する関数（名前をlocalStorageから取得） ---
+window.addPost = async () => {
+    const message = document.getElementById('input-message').value;
+    const name = localStorage.getItem('kuma_user_name'); // 保存された名前を使う
+    const userID = getOrCreateUserID();
+
+    if (message) {
+        await addDoc(postsRef, {
+            name: name,
+            message: message,
+            userID: userID,
+            timestamp: serverTimestamp()
+        });
+        document.getElementById('input-message').value = "";
+    }
+};
+
+// 名前をリセットしたい時用
+window.resetUser = () => {
+    if(confirm("名前を登録し直しますか？")) {
+        localStorage.removeItem('kuma_user_name');
+        initUser();
+    }
+};
+
+// 起動時に実行
+initUser();
